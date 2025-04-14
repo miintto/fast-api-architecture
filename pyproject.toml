@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "fastapi-app"
+version = "0.1.0"
+description = "FastAPI Application for Server Performance Testing"
+authors = ["miintto <miintto.log@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+asyncpg = "^0.30.0"
+bcrypt = "^4.3.0"
+ecs-logging = "^2.2.0"
+fastapi = "^0.115.12"
+greenlet = "^3.1.1"
+pydantic-settings = "^2.8.1"
+psycopg2 = "^2.9.10"
+pyjwt = "^2.10.1"
+sqlalchemy = "^2.0.40"
+uvicorn = {extras = ["standard"], version = "^0.34.1"}
+
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.8.0"
+pytest = "^8.3.5"
+pytest-asyncio = "^0.26.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
