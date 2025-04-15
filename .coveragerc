@@ -1,0 +1,7 @@
+[run]
+source = app
+concurrency = thread, greenlet
+
+[report]
+exclude_also =
+    raise NotImplementedError
