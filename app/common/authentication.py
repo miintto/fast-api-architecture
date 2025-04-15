@@ -1,6 +1,7 @@
 from fastapi.exceptions import HTTPException
 from fastapi.security.base import SecurityBase
 from fastapi.security.utils import get_authorization_scheme_param
+from jwt.exceptions import InvalidTokenError
 from pydantic import ValidationError
 from starlette.requests import Request
 
@@ -27,4 +28,6 @@ class Authentication(SecurityBase):
                 payload=JWTProvider().decode(token),
             )
         except ValidationError:
+            raise HTTPException(status_code=401)
+        except InvalidTokenError:
             raise HTTPException(status_code=401)
