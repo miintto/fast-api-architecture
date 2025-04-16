@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
 from app.application.port.input import ProductUseCase
-from app.application.service.product import ProductService
+from app.application.service.product_service import ProductService
 from app.common.response import JSONResponse
 from .schemas.product import ProductResponse
 

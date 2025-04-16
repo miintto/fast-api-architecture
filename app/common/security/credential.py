@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from app.adapter.outbound.persistence.entity.user import UserPermission
+from app.domain.user import UserPermission
 
 
 class CredentialPayload(BaseModel):

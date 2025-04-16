@@ -26,7 +26,9 @@ class OrderPersistenceAdapter(BaseRepository, OrderRepositoryPort):
         result = await self._session.execute(
             select(OrderEntity).where(OrderEntity.order_number == order_number)
         )
-        return result.scalar_one_or_none()
+        if not (order := result.scalar_one_or_none()):
+            return None
+        return order.to_domain()
 
     async def find_by_id_with_item(self, id_: int) -> Order | None:
         result = await self._session.execute(

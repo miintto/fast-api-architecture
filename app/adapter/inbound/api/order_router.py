@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 
 from app.adapter.inbound.api.schemas.order import OrderInfo
 from app.application.port.input import OrderUseCase
-from app.application.service.order import OrderService
+from app.application.service.order_service import OrderService
 from app.common.permissions import IsAuthenticated
 from app.common.response import JSONResponse
 from app.common.security.credential import HTTPAuthorizationCredentials

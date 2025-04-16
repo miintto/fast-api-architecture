@@ -1,10 +1,9 @@
 from fastapi import APIRouter, Depends
 
 from app.application.port.input.auth_usecase import AuthUseCase
-from app.application.service.auth import AuthService
+from app.application.service.auth_service import AuthService
 from app.common.response import JSONResponse
-
-from app.adapter.inbound.api.schemas.auth import LoginInfo, RegisterInfo
+from .schemas.auth import LoginInfo, RegisterInfo
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 

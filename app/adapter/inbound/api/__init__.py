@@ -1,8 +1,8 @@
 from fastapi.routing import APIRouter
 
-from .auth import router as auth_router
-from .order import router as order_router
-from .product import router as product_router
+from .auth_router import router as auth_router
+from .order_router import router as order_router
+from .product_router import router as product_router
 
 router = APIRouter()
 router.include_router(auth_router)

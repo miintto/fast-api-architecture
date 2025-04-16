@@ -1,8 +1,8 @@
 from fastapi import Depends, HTTPException
 
-from app.adapter.outbound.persistence.order import OrderPersistenceAdapter
-from app.adapter.outbound.persistence.product import ProductPersistenceAdapter
-from app.adapter.outbound.persistence.user import UserPersistenceAdapter
+from app.adapter.outbound.persistence.order_adapter import OrderPersistenceAdapter
+from app.adapter.outbound.persistence.product_adapter import ProductPersistenceAdapter
+from app.adapter.outbound.persistence.user_adapter import UserPersistenceAdapter
 from app.adapter.inbound.api.schemas.order import OrderInfo
 from app.application.port.input import OrderUseCase
 from app.application.port.output import (

@@ -20,7 +20,6 @@ class UserPersistenceAdapter(BaseRepository, UserRepositoryPort):
         result = await self._session.execute(
             select(UserEntity).where(UserEntity.email == email)
         )
-        user = result.scalar_one_or_none()
-        if not user:
+        if not (user := result.scalar_one_or_none()):
             return None
         return user.to_domain()
