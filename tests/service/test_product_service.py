@@ -3,7 +3,7 @@ from unittest.mock import AsyncMock
 from fastapi.exceptions import HTTPException
 import pytest
 
-from app.application.service.product import ProductService
+from app.application.service.product_service import ProductService
 from app.domain.product import Product
 from .factory import ProductFactory
 

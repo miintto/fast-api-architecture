@@ -24,7 +24,7 @@ class UserFactory:
             permission=UserPermission.NORMAL,
             is_active=True,
             last_login=None,
-            created_dtm=datetime.now()
+            created_dtm=datetime.now(),
         )
 
 
@@ -52,7 +52,7 @@ class ProductFactory:
                     created_dtm=datetime.now(),
                     updated_dtm=datetime.now(),
                 )
-            ]
+            ],
         )
 
 
@@ -77,7 +77,7 @@ class OrderFactory:
                     created_dtm=datetime.now(),
                 )
                 for _ in range(count)
-            ]
+            ],
         )
 
 
@@ -90,6 +90,6 @@ def generate_credential() -> HTTPAuthorizationCredentials:
             email="test@test.com",
             permission=UserPermission.NORMAL,
             exp=-1,
-            iat=-1
+            iat=-1,
         )
     )

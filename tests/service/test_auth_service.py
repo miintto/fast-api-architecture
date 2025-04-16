@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 from fastapi.exceptions import HTTPException
 import pytest
 
-from app.application.service.auth import AuthService
+from app.application.service.auth_service import AuthService
 from .factory import UserFactory
 
 

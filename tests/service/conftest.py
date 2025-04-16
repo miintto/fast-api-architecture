@@ -2,9 +2,9 @@ from unittest.mock import AsyncMock
 
 import pytest_asyncio
 
-from app.adapter.outbound.persistence.order import OrderPersistenceAdapter
-from app.adapter.outbound.persistence.product import ProductPersistenceAdapter
-from app.adapter.outbound.persistence.user import UserPersistenceAdapter
+from app.adapter.outbound.persistence.order_adapter import OrderPersistenceAdapter
+from app.adapter.outbound.persistence.product_adapter import ProductPersistenceAdapter
+from app.adapter.outbound.persistence.user_adapter import UserPersistenceAdapter
 
 
 @pytest_asyncio.fixture(scope="function")

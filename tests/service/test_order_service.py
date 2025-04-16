@@ -2,7 +2,8 @@ from fastapi.exceptions import HTTPException
 import pytest
 
 from app.adapter.inbound.api.schemas.order import OrderInfo, OrderItemInfo
-from app.application.service.order import OrderService
+from app.application.service.order_service import OrderService
+from app.domain.order import Order
 from .factory import OrderFactory, ProductFactory, generate_credential
 
 
@@ -10,7 +11,7 @@ def get_order_info() -> OrderInfo:
     return OrderInfo(
         order_number="order_number",
         product_id=1,
-        items=[OrderItemInfo(item_id=12, quantity=2)]
+        items=[OrderItemInfo(item_id=12, quantity=2)],
     )
 
 
@@ -45,3 +46,22 @@ async def test_중복된_주문번호_존재하는_경우(order_repo, product_re
     with pytest.raises(HTTPException) as exc:
         await service.create_order(get_order_info(), generate_credential())
     assert exc.value.status_code == 400
+
+
+@pytest.mark.asyncio
+async def test_존재하지_않는_주문_조회(order_repo, product_repo, user_repo):
+    order_repo.find_by_id_with_item.return_value = None
+
+    service = OrderService(order_repo, product_repo, user_repo)
+    with pytest.raises(HTTPException) as exc:
+        await service.search_order(order_id=1)
+    assert exc.value.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_주문_조회(order_repo, product_repo, user_repo):
+    order_repo.find_by_id_with_item.return_value = OrderFactory.generate()
+
+    service = OrderService(order_repo, product_repo, user_repo)
+    order = await service.search_order(order_id=1)
+    assert isinstance(order, Order)

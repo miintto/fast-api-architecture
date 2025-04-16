@@ -6,11 +6,11 @@ import pytest
 import pytest_asyncio
 from sqlalchemy import insert
 
+from app.adapter.outbound.persistence.entity.base import Base
 from app.adapter.outbound.persistence.entity.product import (
     ProductEntity,
     ProductItemEntity,
 )
-from app.adapter.outbound.persistence.entity.base import Base
 
 os.environ.setdefault("APP_ENV", "test")
 
